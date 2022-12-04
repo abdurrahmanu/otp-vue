@@ -34,7 +34,7 @@
 import { onMounted, ref } from 'vue';
 
 const input_nodes = ref(null);
-const length_of_otp = ref(6)
+const length_of_otp = ref(5)
 const otp_val = ref('')
 const otp = ref(new Array(length_of_otp.value).fill(''))
 const current_input_index = ref(0)
