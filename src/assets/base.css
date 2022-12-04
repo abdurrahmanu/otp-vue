@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply p-2 bg-gray-600 rounded-xl hover:text-gray-900 hover:bg-gray-200 hover:shadow-sm hover:shadow-gray-400
+}
