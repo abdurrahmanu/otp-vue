@@ -59,23 +59,26 @@ const paste_clipboard_text =  async () => {
   input_nodes.value[input_nodes.value.length - 1].focus()
 }
 
-const otp_index = (e, index) => {
-  if (input_nodes.value[input_nodes.value.length - 1].value.length && e.key !== 'Enter') return
-
+const otp_index = (e, index) => {  
   if (input_nodes.value[index + 1]) {
     if (input_nodes.value[index].value.length || e.key === 'ArrowRight') input_nodes.value[index + 1].focus();
   }
-
+  
   if (input_nodes.value[index - 1]) {
     if (e.key === 'Backspace' || e.key === 'ArrowLeft') input_nodes.value[index - 1].focus()
-  }
-
+  } 
+  
   if (e.key === 'Enter') show_otp()
+
+  //maxlength for last otp-input mobile fallback
+  if (index === input_nodes.value.length - 1) {
+    input_nodes.value[index].value = input_nodes.value[index].value[0]
+  }
 }
 
-const show_otp = () => {
-  const otp_complete = otp.value.some(each => !each.length )
-  otp_complete ? otp_val.value = 'incomplete otp' : otp_val.value = otp.value.join('');
+function show_otp() {
+const otp_complete = otp.value.some(each => !each.length);
+otp_complete ? otp_val.value = 'incomplete otp' : otp_val.value = otp.value.join('');
 }
 
 </script>
