@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="my-10 text-center text-xl">OTP INPUT</div>
+    <div class="my-10 text-center text-xl underline ">OTP INPUT</div>
     <p class="text-center mb-5">Use CTRL + V to paste from clipboard</p>
     <div class="flex gap-4">
       <input
@@ -12,8 +12,8 @@
       @paste="paste_clipboard_text"
       ref="input_nodes"
       v-model="otp[i - 1]"
-      :class="{'border-blue-400 border': i === current_input_index}"
-      class="block p-2 w-16 h-16 rounded-md text-center outline-none text-2xl border-black border"
+      :class="{'border-green-400 border': i == current_input_index}"
+      class="block p-2 w-16 shadow-md shadow-gray-300 h-16 rounded-md text-center outline-none text-2xl border-black border"
       maxlength="1"
       >
     </div>
@@ -21,7 +21,7 @@
       <button
       @click="show_otp"
       class="p-3 bg-blue-400 text-white rounded-2xl px-5 hover:bg-blue-600 active:scale-95">SUBMIT</button>
-    </div> 
+    </div>
     <div class="text-center text-2xl mt-10 flex items-center bg-gray-400 p-2 w-fit m-auto rounded-md justify-center gap-2">OTP:
       <span class="border-gray-400 px-5 border inline-block w-fit  rounded-sm h-10 bg-gray-200">
         {{otp_val}}
@@ -34,9 +34,11 @@
 import { onMounted, ref } from 'vue';
 
 const input_nodes = ref(null);
-const length_of_otp = ref(5)
+const length_of_otp = 5
 const otp_val = ref('')
-const otp = ref(new Array(length_of_otp.value).fill(''))
+const otp = ref([])
+otp.value.length = length_of_otp
+otp.value.fill('')
 const current_input_index = ref(0)
 
 onMounted(() => input_nodes.value[0].focus())
@@ -58,6 +60,8 @@ const paste_clipboard_text =  async () => {
 }
 
 const otp_index = (e, index) => {
+  if (input_nodes.value[input_nodes.value.length - 1].value.length && e.key !== 'Enter') return
+
   if (input_nodes.value[index + 1]) {
     if (input_nodes.value[index].value.length || e.key === 'ArrowRight') input_nodes.value[index + 1].focus();
   }
