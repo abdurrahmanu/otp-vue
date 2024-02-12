@@ -1,6 +1,6 @@
 <template>
-  <main class="h-screen m-auto">
-    <div class="flex gap-4">
+  <main class="h-screen">
+    <div class="flex gap-4 py-10">
       <input
       v-for="i in length_of_otp"
       :key="i"
