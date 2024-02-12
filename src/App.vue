@@ -63,8 +63,6 @@ const paste_clipboard_text =  async () => {
 }
 
 const otp_index = (e, index) => {  
-  if (e.key === 'Enter') show_otp()
-
   if (input_nodes.value[index + 1]) {
     if (input_nodes.value[index].value.length || e.key === 'ArrowRight') input_nodes.value[index + 1].focus();
   }
