@@ -1,7 +1,5 @@
 <template>
   <main>
-    <div class="my-10 text-center text-xl underline ">OTP INPUT</div>
-    <p class="text-center mb-5">Use CTRL + V to paste from clipboard</p>
     <div class="flex gap-4">
       <input
       v-for="i in length_of_otp"
@@ -14,18 +12,17 @@
       v-model="otp[i - 1]"
       :class="{'border-2 border-gray-300 ': current_input_index == i}"
       class="block p-2 w-16 shadow-md shadow-gray-300 h-16 rounded-md text-center outline-none text-2xl border-black border"
-      maxlength="1"
-      >
+      maxlength="1">
     </div>
-    <div class="mt-5 text-center">
+    <div class="text-center">
       <button
       @click="show_otp"
-      class="p-3 bg-blue-400 text-white rounded-2xl px-5 hover:bg-blue-600 active:scale-95">SUBMIT</button>
+      class="p-3 bg-blue-300 rounded-2xl px-5">SUBMIT</button>
     </div>
-    <div class="text-center text-2xl mt-10 flex items-center bg-gray-400 p-2 w-fit m-auto rounded-md justify-center gap-2">OTP:
-      <span class="border-gray-400 px-5 border inline-block w-fit  rounded-sm h-10 bg-gray-200">
-        {{otp_val}}
-      </span>
+    <div class="text-center">
+        "payload": {
+        "otp": "{{otp_val}}"
+        }
     </div>
   </main>
 </template>
@@ -40,8 +37,6 @@ const otp = ref([])
 otp.value.length = length_of_otp.value
 otp.value.fill('')
 const current_input_index = ref(0)
-
-onMounted(() => input_nodes.value[0].focus())
 
 const paste_clipboard_text =  async () => {
   const clipboard_text = await navigator.clipboard.readText()
