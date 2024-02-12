@@ -1,5 +1,5 @@
 <template>
-  <main class="h-screen">
+  <main class="py-20 bg-zinc-300">
     <div class="flex gap-4 py-10">
       <input
       v-for="i in length_of_otp"
