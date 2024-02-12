@@ -74,9 +74,15 @@ const otp_index = (e, index) => {
 }
 
 function show_otp() {
-const otp_complete = otp.value.some(each => !each.length);
-otp_complete ? otp_val.value = 'null' : otp_val.value = otp.value.join('');
-otp_complete ? success.value = 'unsuccesful' : success.value = 'successful'
+const otp_incomplete = otp.value.some(each => !each.length);
+
+ if (otp_incomplete) {
+    otp_val.value = 'null'
+    success.value = 'unsuccesful'   
+ } else {
+    otp_val.value = otp.value.join('')
+    success.value = 'successful'
+ }
 }
 </script>
 
