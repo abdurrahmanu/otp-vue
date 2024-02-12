@@ -2,7 +2,7 @@
   <main class="py-20">
     <div class="flex gap-4 py-10">
       <input
-      v-for="i in length_of_otp"
+      v-for="i in length"
       :key="i"
       @focus="current_input_index = i"
       @keypress.space.prevent
@@ -14,11 +14,9 @@
       class="block p-2 w-16 shadow-md shadow-gray-300 h-16 rounded-md text-center outline-none text-2xl border-black border"
       maxlength="1">
     </div>
-    <div class="text-center py-3">
       <button
       @click="show_otp"
-      class="p-1 bg-green-300 rounded-2xl selection:bg-transparent px-5">SUBMIT</button>
-    </div>
+      class="p-1 inline-block m-auto bg-green-300 rounded-2xl selection:bg-transparent px-5">SUBMIT</button>
     <div class="text-center py-3">
         "payload": {
         "otp": "{{otp_val}}",
@@ -29,16 +27,24 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, defineProps} from 'vue';
 
 const input_nodes = ref(null);
-const length_of_otp = ref(5);
 const otp_val = ref('')
 const success = ref('')
 const otp = ref([])
-otp.value.length = length_of_otp.value
-otp.value.fill('')
 const current_input_index = ref(0)
+
+const props = defineProps({
+   length: {
+     type: number,
+     default: 4,
+   }
+)}
+
+otp.value.length = props.length
+otp.value.fill('')
+
 
 const paste_clipboard_text =  async () => {
   const clipboard_text = await navigator.clipboard.readText()
