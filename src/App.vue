@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="h-screen m-auto">
     <div class="flex gap-4">
       <input
       v-for="i in length_of_otp"
@@ -14,12 +14,12 @@
       class="block p-2 w-16 shadow-md shadow-gray-300 h-16 rounded-md text-center outline-none text-2xl border-black border"
       maxlength="1">
     </div>
-    <div class="text-center">
+    <div class="text-center py-3">
       <button
       @click="show_otp"
       class="p-3 bg-blue-300 rounded-2xl px-5">SUBMIT</button>
     </div>
-    <div class="text-center">
+    <div class="text-center py-3">
         "payload": {
         "otp": "{{otp_val}}"
         }
