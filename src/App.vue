@@ -17,7 +17,7 @@
     <div class="text-center py-3">
       <button
       @click="show_otp"
-      class="p-1 bg-green-300 rounded-2xl px-5">SUBMIT</button>
+      class="p-1 bg-green-300 rounded-2xl selection:bg-transparent px-5">SUBMIT</button>
     </div>
     <div class="text-center py-3">
         "payload": {
