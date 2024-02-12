@@ -21,7 +21,8 @@
     </div>
     <div class="text-center py-3">
         "payload": {
-        "otp": "{{otp_val}}"
+        "otp": "{{otp_val}}",
+        "success": "{{success}}"
         }
     </div>
   </main>
@@ -33,6 +34,7 @@ import { onMounted, ref } from 'vue';
 const input_nodes = ref(null);
 const length_of_otp = ref(5);
 const otp_val = ref('')
+const success = ref('')
 const otp = ref([])
 otp.value.length = length_of_otp.value
 otp.value.fill('')
@@ -73,7 +75,8 @@ const otp_index = (e, index) => {
 
 function show_otp() {
 const otp_complete = otp.value.some(each => !each.length);
-otp_complete ? otp_val.value = 'incomplete otp' : otp_val.value = otp.value.join('');
+otp_complete ? otp_val.value = 'null' : otp_val.value = otp.value.join('');
+otp_complete ? success.value = 'unsuccesful' : success.value = 'successful'
 }
 </script>
 
